@@ -102,7 +102,7 @@ const messageColumns = {
 };
 
 const senderColumns = {
-  senderName: varchar('sender_name', { length: 255 }).notNull()
+  senderName: varchar('sender_name', { length: 255 }).notNull(),
 };
 
 /**

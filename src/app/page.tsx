@@ -1,4 +1,4 @@
-import { getSenderByName } from "@treeshake/server/db/queries";
+import { getSenderByName } from '@treeshake/server/db/queries';
 
 export default async function Page() {
   const sender = await getSenderByName('V THE LABEL Jewellery Australia');

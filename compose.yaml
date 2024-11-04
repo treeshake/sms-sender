@@ -11,7 +11,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=sms
     ports:
-      - "5432:5432"
+      - "5433:5433"
     restart: always
     networks:
       - sms-sender_network

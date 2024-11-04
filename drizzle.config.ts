@@ -8,5 +8,5 @@ export default {
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ["sms-sender_*"],
+  tablesFilter: ["sms_*"],
 } satisfies Config;

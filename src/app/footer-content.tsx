@@ -1,4 +1,4 @@
-import { ModeToggle } from "@treeshake/ui/components/mode-toggle";
+import { ModeToggle } from '@treeshake/ui/components/mode-toggle';
 
 export function FooterContent() {
   return (

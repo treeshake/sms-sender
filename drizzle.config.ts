@@ -1,12 +1,12 @@
-import { type Config } from "drizzle-kit";
+import { type Config } from 'drizzle-kit';
 
-import { env } from "@treeshake/env";
+import { env } from '@treeshake/env';
 
 export default {
-  schema: "./src/server/db/schema.ts",
-  dialect: "postgresql",
+  schema: './src/server/db/schema.ts',
+  dialect: 'postgresql',
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ["sms_*"],
+  tablesFilter: ['sms_*'],
 } satisfies Config;

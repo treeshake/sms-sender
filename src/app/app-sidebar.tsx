@@ -8,16 +8,16 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@treeshake/ui/components/sidebar";
+} from '@treeshake/ui/components/sidebar';
 
-import { Home } from "lucide-react";
-import { FooterContent } from "./footer-content";
+import { Home } from 'lucide-react';
+import { FooterContent } from './footer-content';
 
 // Menu items.
 const items = [
   {
-    title: "Home",
-    url: "#",
+    title: 'Home',
+    url: '#',
     icon: Home,
   },
 ];

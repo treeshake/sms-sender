@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  sms.db:
+    image: postgres:16.4
+    container_name: sms-sender_db
+    environment:
+      - TZ=Australia/Sydney
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=sms
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - sms-sender_network
+
+  sms.webapp:
+    container_name: sms-sender_webapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    # Set environment variables directly in the compose file
+    # environment:
+      # ENV_VARIABLE: ${ENV_VARIABLE}
+      # NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+
+    # Set environment variables based on the .env file
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    restart: always
+    ports:
+      - 4012:4012
+    networks:
+      - sms-sender_network
+    depends_on:
+      - sms.db
+
+#network section
+networks:
+  sms-sender_network:
+    name: sms-sender_network
+    driver: bridge
+  default:
+    name: sms-sender_network

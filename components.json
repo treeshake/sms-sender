@@ -12,7 +12,7 @@
   },
   "aliases": {
     "components": "@treeshake/ui/components",
-    "utils": "@treeshake/ui/lib/utils",
+    "utils": "@treeshake/ui/utils",
     "ui": "@treeshake/ui/components",
     "lib": "@treeshake/ui/lib",
     "hooks": "@treeshake/ui/hooks"

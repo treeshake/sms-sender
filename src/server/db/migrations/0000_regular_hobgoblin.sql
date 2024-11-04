@@ -1,4 +1,3 @@
-CREATE SCHEMA "sms";
 --> statement-breakpoint
 DO $$ BEGIN
  CREATE TYPE "sms"."subscription_status" AS ENUM('SUBSCRIBED', 'UNSUBSCRIBED', 'DISABLED');

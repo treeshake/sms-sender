@@ -36,10 +36,10 @@ export const transactionStatusEnum = schema.enum('transaction_status', [
  */
 const contactIdForeignKey = integer('contact_id')
   .notNull()
-  .references(() => contactTable.id);
+  .references(() => contact.id);
 const senderIdForeignKey = integer('sender_id')
   .notNull()
-  .references(() => senderTable.id);
+  .references(() => sender.id);
 /**
  * Column defs
  */
@@ -60,9 +60,6 @@ const idColumn = {
   id: serial('id').primaryKey(),
 };
 
-const nameColumn = (length: { length: number } = { length: 255 }) =>
-  varchar('name', length).notNull();
-
 const contactColumns = {
   phone: varchar('phone', { length: 50 }).notNull(),
   firstName: varchar('first_name', { length: 1000 }).notNull(),
@@ -79,7 +76,7 @@ const subscriptionColumns = {
   senderId: senderIdForeignKey,
   status: subscriptionStatusEnum('status').notNull(),
   unsubTransactionRef: integer('unsub_transaction_ref').references(
-    () => transactionTable.id,
+    () => transaction.id,
   ),
 };
 
@@ -94,7 +91,7 @@ const transactionColumns = {
   contactId: contactIdForeignKey,
   messageId: integer('message_id')
     .notNull()
-    .references(() => messageTable.id),
+    .references(() => message.id),
   senderId: senderIdForeignKey,
 };
 
@@ -105,36 +102,36 @@ const messageColumns = {
 };
 
 const senderColumns = {
-  senderName: nameColumn('sender_name'),
+  senderName: varchar('sender_name', { length: 255 }).notNull()
 };
 
 /**
  * Tables
  */
-export const contactTable = schema.table('contact', {
+export const contact = schema.table('contact', {
   ...idColumn,
   ...contactColumns,
   ...timestampColumns,
 });
 
-export const subscriptionTable = schema.table('subscription', {
+export const subscription = schema.table('subscription', {
   ...idColumn,
   ...subscriptionColumns,
   ...timestampColumns,
 });
 
-export const transactionTable = schema.table('transaction', {
+export const transaction = schema.table('transaction', {
   ...idColumn,
   ...transactionColumns,
 });
 
-export const messageTable = schema.table('message', {
+export const message = schema.table('message', {
   ...idColumn,
   ...messageColumns,
   ...timestampColumns,
 });
 
-export const senderTable = schema.table('sender', {
+export const sender = schema.table('sender', {
   ...idColumn,
   ...senderColumns,
   ...timestampColumns,

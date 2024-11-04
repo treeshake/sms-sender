@@ -44,3 +44,6 @@ yarn-error.log*
 
 # idea files
 .idea
+
+# seed files, could contain PII data
+/seed-data

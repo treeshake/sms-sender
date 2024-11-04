@@ -4,6 +4,7 @@
     "precommit",
     "tailwindcss",
     "treeshake",
+    "typecheck",
     "Unsub"
   ]
 }

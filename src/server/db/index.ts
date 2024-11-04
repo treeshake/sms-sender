@@ -1,8 +1,8 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
-import { migrate } from 'drizzle-orm/node-postgres/migrator';
 import postgres from 'postgres';
 
 import { env } from '@treeshake/env';
+import { sql } from 'drizzle-orm';
 import * as schema from './schema';
 
 /**
@@ -16,7 +16,7 @@ const globalForDb = globalThis as unknown as {
 const conn = globalForDb.conn ?? postgres(env.DATABASE_URL);
 if (env.NODE_ENV !== 'production') globalForDb.conn = conn;
 
-const db = drizzle(conn, { schema });
+const db = drizzle(conn, { schema, logger: true });
 
-// Auto-migrate the database
-await migrate(db, { migrationsFolder: './src/server/db/migrations' });
+// Check if the database is connected
+await db.execute(sql`SELECT 1`);

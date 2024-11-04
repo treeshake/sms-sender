@@ -1,23 +1,38 @@
 version: '3.8'
 
 services:
+  # PG Admin
+  sms.pgadmin:
+    image: dpage/pgadmin4
+    container_name: sms_pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=software@treeshake.com.au
+      - PGADMIN_DEFAULT_PASSWORD=admin1234
+    restart: always
+    ports:
+      - '6060:80'
+    networks:
+      - sms_network
+
+  # Postgres
   sms.db:
     image: postgres:16.4
-    container_name: sms-sender_db
+    container_name: sms_db
     environment:
       - TZ=Australia/Sydney
       - POSTGRES_HOST_AUTH_METHOD=trust
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=sms
+      - POSTGRES_DB=sms_db
     ports:
-      - "5433:5433"
+      - "5431:5432"
     restart: always
     networks:
-      - sms-sender_network
+      - sms_network
 
+  # Webapp
   sms.webapp:
-    container_name: sms-sender_webapp
+    container_name: sms_webapp
     build:
       context: .
       dockerfile: Dockerfile
@@ -37,14 +52,14 @@ services:
     ports:
       - 4012:4012
     networks:
-      - sms-sender_network
+      - sms_network
     depends_on:
       - sms.db
 
 #network section
 networks:
-  sms-sender_network:
-    name: sms-sender_network
+  sms_network:
+    name: sms_network
     driver: bridge
   default:
-    name: sms-sender_network
+    name: sms_network

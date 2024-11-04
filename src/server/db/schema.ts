@@ -4,8 +4,7 @@
 import { sql } from 'drizzle-orm';
 import {
   integer,
-  pgEnum,
-  pgTableCreator,
+  pgSchema,
   serial,
   text,
   timestamp,
@@ -13,23 +12,20 @@ import {
 } from 'drizzle-orm/pg-core';
 
 /**
- * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
- * database instance for multiple projects.
- *
- * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
+ * Schema
  */
-export const createTable = pgTableCreator((name) => `${name}`);
+export const schema = pgSchema('sms');
 
 /**
  * Enums
  */
-const subscriptionStatusEnum = pgEnum('subscription_status', [
+export const subscriptionStatusEnum = schema.enum('subscription_status', [
   'SUBSCRIBED', // Subscribed for SMS
   'UNSUBSCRIBED', // Unsubscribed from SMS
   'DISABLED', // Disabled, no SMS sent, but contact has not unsubscribed
 ]);
 
-const transactionStatusEnum = pgEnum('subscription_status', [
+export const transactionStatusEnum = schema.enum('transaction_status', [
   'SUCCESS',
   'FAIL',
   'UNKNOWN',
@@ -115,30 +111,30 @@ const senderColumns = {
 /**
  * Tables
  */
-export const contactTable = createTable('contact', {
+export const contactTable = schema.table('contact', {
   ...idColumn,
   ...contactColumns,
   ...timestampColumns,
 });
 
-export const subscriptionTable = createTable('subscription', {
+export const subscriptionTable = schema.table('subscription', {
   ...idColumn,
   ...subscriptionColumns,
   ...timestampColumns,
 });
 
-export const transactionTable = createTable('transaction', {
+export const transactionTable = schema.table('transaction', {
   ...idColumn,
   ...transactionColumns,
 });
 
-export const messageTable = createTable('message', {
+export const messageTable = schema.table('message', {
   ...idColumn,
   ...messageColumns,
   ...timestampColumns,
 });
 
-export const senderTable = createTable('sender', {
+export const senderTable = schema.table('sender', {
   ...idColumn,
   ...senderColumns,
   ...timestampColumns,

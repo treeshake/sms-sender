@@ -18,7 +18,7 @@ import { useFormStatus } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { type z } from 'zod';
 
-export function CreateSenderForm() {
+export function SenderForm() {
   const { pending } = useFormStatus();
   const form = useForm<z.infer<typeof senderFormSchema>>({
     resolver: zodResolver(senderFormSchema),
@@ -27,7 +27,7 @@ export function CreateSenderForm() {
     },
   });
 
-  const handleSubmitSender = async (data: z.infer<typeof senderFormSchema>) => {
+  const submitHandler = async (data: z.infer<typeof senderFormSchema>) => {
     await createSenderAction(data);
     form.reset();
   };
@@ -35,10 +35,7 @@ export function CreateSenderForm() {
   return (
     <div className='flex'>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleSubmitSender)}
-          className='space-y-8'
-        >
+        <form onSubmit={form.handleSubmit(submitHandler)} className='space-y-8'>
           <FormField
             control={form.control}
             name='name'

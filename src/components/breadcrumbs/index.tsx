@@ -14,13 +14,15 @@ export function AppBreadcrumb({ items }: { items: BreadcrumbConfigItem[] }) {
       <BreadcrumbList>
         {items.map((breadcrumb, index) => (
           <>
-            <BreadcrumbItem key={index} className='hidden md:block'>
+            <BreadcrumbItem key={`${index}-item`} className='hidden md:block'>
               {breadcrumb.href ? (
-                <BreadcrumbLink href={breadcrumb.href}>
+                <BreadcrumbLink href={breadcrumb.href} key={`${index}-link`}>
                   {breadcrumb.name}
                 </BreadcrumbLink>
               ) : (
-                <BreadcrumbPage>{breadcrumb.name}</BreadcrumbPage>
+                <BreadcrumbPage key={`${index}-page`}>
+                  {breadcrumb.name}
+                </BreadcrumbPage>
               )}
             </BreadcrumbItem>
             {index < items.length - 1 && (

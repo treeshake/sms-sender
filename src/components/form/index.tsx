@@ -57,7 +57,7 @@ export function SendForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(submitHandler)} className='space-y-8'>
+      <form onSubmit={form.handleSubmit(submitHandler)} className='space-y-4'>
         <SelectOptionFormField
           form={form}
           options={senders.map(mapToName)}
@@ -73,9 +73,11 @@ export function SendForm({
           label='Contacts list'
           placeholder='Select a contacts list'
         />
-        <Button type='submit' disabled={pending}>
-          Send SMS
-        </Button>
+        <div className='pt-2'>
+          <Button type='submit' disabled={pending}>
+            Send SMS
+          </Button>
+        </div>
       </form>
     </Form>
   );

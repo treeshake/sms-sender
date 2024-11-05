@@ -15,13 +15,19 @@ export function ContactDataTable({
 }: Readonly<{ contacts: Contact[] }>) {
   return (
     <Table>
-      <TableCaption>A list of your {contacts.length === 50 ? `${contacts.length} most recent contacts.` : `contacts`}</TableCaption>
+      <TableCaption>
+        A list of your{' '}
+        {contacts.length === 50
+          ? `${contacts.length} most recent contacts.`
+          : `contacts`}
+      </TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Name</TableHead>
           <TableHead>Phone number</TableHead>
           <TableHead>Email address</TableHead>
           <TableHead>Country</TableHead>
+          <TableHead>Custom Reference ID</TableHead>
           <TableHead>Last updated</TableHead>
           <TableHead>Created</TableHead>
           <TableHead>Actions</TableHead>
@@ -30,10 +36,13 @@ export function ContactDataTable({
       <TableBody>
         {contacts.map((contact) => (
           <TableRow key={contact.id}>
-            <TableCell className='font-medium'>{contact.firstName} {contact.lastName}</TableCell>
+            <TableCell className='font-medium'>
+              {contact.firstName} {contact.lastName}
+            </TableCell>
             <TableCell>{contact.phone}</TableCell>
             <TableCell>{contact.emailAddress}</TableCell>
             <TableCell>{contact.countryCode}</TableCell>
+            <TableHead>{contact.customReferenceId ?? '-'}</TableHead>
             <TableCell>
               {contact.updatedAt?.toLocaleString() ??
                 contact.createdAt.toLocaleString()}

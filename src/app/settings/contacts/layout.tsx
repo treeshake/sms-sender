@@ -1,7 +1,11 @@
 import { Container } from '@treeshake/components/layouts/default';
 import { AppHeader } from '@treeshake/components/layouts/header';
+import { SETTINGS_CONTACTS_PATH } from '@treeshake/server/constants';
 
-const breadcrumbs = [{ name: 'Settings' }, { name: 'Senders' }];
+const breadcrumbs = [
+  { name: 'Settings' },
+  { name: 'Contacts', href: SETTINGS_CONTACTS_PATH },
+];
 
 export default function Layout({
   children,

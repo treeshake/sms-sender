@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from '@treeshake/ui/components/table';
-import { DeleteRowAction } from './row-actions';
+import { DeleteSenderRowAction } from './row-actions';
 
 export function SenderDataTable({ senders }: Readonly<{ senders: Sender[] }>) {
   return (
@@ -32,7 +32,7 @@ export function SenderDataTable({ senders }: Readonly<{ senders: Sender[] }>) {
             </TableCell>
             <TableCell>{sender.createdAt.toLocaleString()}</TableCell>
             <TableCell>
-              <DeleteRowAction sender={sender} />
+              <DeleteSenderRowAction sender={sender} />
             </TableCell>
           </TableRow>
         ))}

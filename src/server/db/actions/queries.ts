@@ -1,8 +1,8 @@
-"use server";
+'use server';
 
-import { db } from "..";
-import { contactListSummary, sender } from "../schema";
-import { ContactListsSummary, type Sender } from "../types";
+import { db } from '..';
+import { contactListSummary, sender } from '../schema';
+import { type ContactListsSummary, type Sender } from '../types';
 
 export async function getSenders(): Promise<Sender[]> {
   return await db.select().from(sender);

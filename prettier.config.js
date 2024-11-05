@@ -3,5 +3,5 @@
 export default {
   singleQuote: true,
   jsxSingleQuote: true,
-  plugins: ["prettier-plugin-tailwindcss"],
+  plugins: ['prettier-plugin-tailwindcss'],
 };

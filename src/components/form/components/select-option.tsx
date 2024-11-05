@@ -29,7 +29,7 @@ export function SelectOptionFormField({
   return (
     <FormField
       control={form.control}
-      name="sender"
+      name='sender'
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>

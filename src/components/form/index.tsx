@@ -57,12 +57,12 @@ export function SendForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
         <SelectOptionFormField
           form={form}
           options={senders.map(mapToName)}
-          label="Sender"
-          placeholder="Select a sender"
+          label='Sender'
+          placeholder='Select a sender'
         />
         <SelectOptionFormField
           form={form}
@@ -70,10 +70,10 @@ export function SendForm({
             (contactList) =>
               `${contactList.name} (${contactList.numberOfContacts})`,
           )}
-          label="Contacts list"
-          placeholder="Select a contacts list"
+          label='Contacts list'
+          placeholder='Select a contacts list'
         />
-        <Button type="submit" disabled={pending}>
+        <Button type='submit' disabled={pending}>
           Submit
         </Button>
       </form>

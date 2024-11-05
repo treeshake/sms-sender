@@ -1,4 +1,4 @@
-import { Container } from "@treeshake/components/layouts/default";
+import { Container } from '@treeshake/components/layouts/default';
 
 export default function Layout({
   children,

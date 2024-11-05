@@ -1,4 +1,4 @@
-import { CenteredContainer } from "@treeshake/components/layouts/centered";
+import { CenteredContainer } from '@treeshake/components/layouts/centered';
 
 export default function Layout({
   children,

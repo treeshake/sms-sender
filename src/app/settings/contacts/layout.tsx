@@ -1,10 +1,7 @@
 import { Container } from '@treeshake/components/layouts/default';
 import { AppHeader } from '@treeshake/components/layouts/header';
 
-const breadcrumbs = [
-  { name: 'Settings' },
-  { name: 'Contacts' },
-];
+const breadcrumbs = [{ name: 'Settings' }, { name: 'Contacts' }];
 
 export default function Layout({
   children,

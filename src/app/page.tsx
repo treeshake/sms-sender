@@ -1,13 +1,13 @@
 import {
-  getContactLists,
+  getContactListsSummary,
   getSenders,
-} from "@treeshake/server/db/actions/queries";
-import { SendForm } from "./form";
+} from '@treeshake/server/db/actions/queries';
+import { SendForm } from './form';
 
 export default async function Page() {
   const [senders, contactLists] = await Promise.all([
     getSenders(),
-    getContactLists(),
+    getContactListsSummary(),
   ]);
 
   return (

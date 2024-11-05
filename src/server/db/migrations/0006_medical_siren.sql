@@ -1,0 +1,1 @@
+CREATE VIEW "sms"."contact_list_summary_view" AS (SELECT id, name, description, count(*) as number_of_contacts from "sms".contact_list_contacts clc JOIN "sms".contact_list cl on cl.id = clc.contact_list_id group by id, name, description);

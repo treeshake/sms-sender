@@ -1,6 +1,9 @@
-
-
-export function generateRandomString(param1: string, param2: string, param3: string, param4: string): string {
+export function generateRandomString(
+  param1: string,
+  param2: string,
+  param3: string,
+  param4: string,
+): string {
   const combined = `${param1}${param2}${param3}${param4}`;
   const upperCaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz';
@@ -26,7 +29,10 @@ export function generateRandomString(param1: string, param2: string, param3: str
   }
 
   // Shuffle the result to mix upper and lower case letters
-  result = result.split('').sort(() => 0.5 - Math.random()).join('');
+  result = result
+    .split('')
+    .sort(() => 0.5 - Math.random())
+    .join('');
 
   return result;
 }

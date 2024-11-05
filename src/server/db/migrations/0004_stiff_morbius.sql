@@ -1,0 +1,1 @@
+ALTER TABLE "sms"."sender" ALTER COLUMN "name" SET NOT NULL;

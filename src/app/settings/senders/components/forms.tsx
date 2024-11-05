@@ -1,6 +1,8 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { createSenderAction } from '@treeshake/server/actions';
+import { senderFormSchema } from '@treeshake/server/validations';
 import { Button } from '@treeshake/ui/components/button';
 import {
   Form,
@@ -14,31 +16,29 @@ import {
 import { Input } from '@treeshake/ui/components/input';
 import { useFormStatus } from 'react-dom';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-
-const formSchema = z.object({
-  name: z.string({
-    required_error: 'Please enter a sender name.',
-  }),
-});
+import { type z } from 'zod';
 
 export function CreateSenderForm() {
   const { pending } = useFormStatus();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof senderFormSchema>>({
+    resolver: zodResolver(senderFormSchema),
     defaultValues: {
       name: '',
     },
   });
 
-  function submitHandler(values: z.infer<typeof formSchema>) {
-    console.log(values);
-  }
+  const handleSubmitSender = async (data: z.infer<typeof senderFormSchema>) => {
+    await createSenderAction(data);
+    form.reset();
+  };
 
   return (
     <div className='flex'>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(submitHandler)} className='space-y-8'>
+        <form
+          onSubmit={form.handleSubmit(handleSubmitSender)}
+          className='space-y-8'
+        >
           <FormField
             control={form.control}
             name='name'

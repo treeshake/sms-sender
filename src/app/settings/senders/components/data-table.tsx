@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from '@treeshake/ui/components/table';
+import { DeleteRowAction } from './row-actions';
 
 export function SenderDataTable({ senders }: Readonly<{ senders: Sender[] }>) {
   return (
@@ -18,6 +19,7 @@ export function SenderDataTable({ senders }: Readonly<{ senders: Sender[] }>) {
           <TableHead>Sender name</TableHead>
           <TableHead>Last updated</TableHead>
           <TableHead>Created</TableHead>
+          <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -28,7 +30,10 @@ export function SenderDataTable({ senders }: Readonly<{ senders: Sender[] }>) {
               {sender.updatedAt?.toLocaleString() ??
                 sender.createdAt.toLocaleString()}
             </TableCell>
-            <TableCell>{sender.createdAt.toLocaleString()}</TableCell>{' '}
+            <TableCell>{sender.createdAt.toLocaleString()}</TableCell>
+            <TableCell>
+              <DeleteRowAction sender={sender} />
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

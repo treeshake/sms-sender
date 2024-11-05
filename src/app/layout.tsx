@@ -1,3 +1,4 @@
+import { AppSidebar } from "@treeshake/components/sidebar";
 import "@treeshake/styles/globals.css";
 import {
   SidebarProvider,
@@ -7,7 +8,6 @@ import { ThemeProvider } from "@treeshake/ui/theme-provider";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-import { AppSidebar } from "./app-sidebar";
 
 export const metadata: Metadata = {
   title: "SMS Sender App",
@@ -30,7 +30,11 @@ export default function RootLayout({
           <SidebarProvider>
             <AppSidebar />
             <SidebarTrigger />
-            {children}
+            <main className="flex min-h-screen flex-col items-center justify-center w-full">
+              <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
+                {children}
+              </div>
+            </main>
           </SidebarProvider>
         </ThemeProvider>
       </body>

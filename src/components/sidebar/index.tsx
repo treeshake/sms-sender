@@ -10,16 +10,21 @@ import {
   SidebarMenuItem,
 } from '@treeshake/ui/components/sidebar';
 
-import { Home } from 'lucide-react';
+import { Send, Settings } from 'lucide-react';
 import { FooterContent } from './footer-content';
 
 // Menu items.
 const items = [
   {
-    title: 'Home',
-    url: '#',
-    icon: Home,
+    title: 'Send SMS',
+    url: '/send-sms',
+    icon: Send,
   },
+  {
+    title: 'Settings',
+    url: '/settings',
+    icon: Settings,
+  }
 ];
 
 export function AppSidebar() {

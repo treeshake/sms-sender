@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   type ContactListsSummary,
   type Sender,
-} from "@treeshake/server/db/types";
-import { Button } from "@treeshake/ui/components/button";
-import { Form } from "@treeshake/ui/components/form";
-import { useFormStatus } from "react-dom";
-import { useForm, type UseFormReturn } from "react-hook-form";
-import { z } from "zod";
-import { SelectOptionFormField } from "./components/select-option";
+} from '@treeshake/server/db/types';
+import { Button } from '@treeshake/ui/components/button';
+import { Form } from '@treeshake/ui/components/form';
+import { useFormStatus } from 'react-dom';
+import { useForm, type UseFormReturn } from 'react-hook-form';
+import { z } from 'zod';
+import { SelectOptionFormField } from './components/select-option';
 
 const formSchema = z.object({
   sender: z.string({
-    required_error: "Please select a sender.",
+    required_error: 'Please select a sender.',
   }),
   contactList: z.string({
-    required_error: "Please select a contact list.",
+    required_error: 'Please select a contact list.',
   }),
 });
 
@@ -73,7 +73,9 @@ export function SendForm({
           label="Contacts list"
           placeholder="Select a contacts list"
         />
-        <Button type="submit" disabled={pending}>Submit</Button>
+        <Button type="submit" disabled={pending}>
+          Submit
+        </Button>
       </form>
     </Form>
   );

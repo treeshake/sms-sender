@@ -10,6 +10,7 @@ import {
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core';
+import { LENGTH } from './constants';
 
 /**
  * Schema
@@ -40,8 +41,9 @@ const contactIdForeignKey = integer('contact_id')
 const senderIdForeignKey = integer('sender_id')
   .notNull()
   .references(() => sender.id);
+
 /**
- * Column defs
+ * Column definitions
  */
 const currentTimestamp = (columnName: string) =>
   timestamp(columnName, { withTimezone: true })
@@ -61,12 +63,12 @@ const idColumn = {
 };
 
 const contactColumns = {
-  phone: varchar('phone', { length: 50 }).notNull(),
-  firstName: varchar('first_name', { length: 1000 }).notNull(),
-  lastName: varchar('last_name', { length: 1000 }).notNull(),
+  phone: varchar('phone', { length: LENGTH.INT_64 }).notNull(),
+  firstName: varchar('first_name', { length: LENGTH.INT_2048 }).notNull(),
+  lastName: varchar('last_name', { length: LENGTH.INT_2048 }).notNull(),
   customReferenceId: varchar('custom_reference_id'),
-  emailAddress: varchar('email_address', { length: 255 }).notNull(),
-  countryCode: varchar('country_code', { length: 50 })
+  emailAddress: varchar('email_address', { length: LENGTH.INT_2048 }).notNull(),
+  countryCode: varchar('country_code', { length: LENGTH.INT_4 })
     .notNull()
     .$default(() => 'AU'),
 };
@@ -84,8 +86,8 @@ const transactionColumns = {
   status: transactionStatusEnum('status').notNull(),
   createdAt: currentTimestamp('created_at'),
   sentAt: currentTimestamp('sent_at'),
-  uniqueCtaRef: varchar('unique_cta_ref', { length: 6 }), // CTA = Call to Action
-  uniqueUnsubRef: varchar('unique_unsub_ref', { length: 6 }),
+  uniqueCtaRef: varchar('unique_cta_ref', { length: LENGTH.INT_8 }), // CTA = Call to Action
+  uniqueUnsubRef: varchar('unique_unsub_ref', { length: LENGTH.INT_8 }),
   ctaClickedAt: timestamp('cta_clicked_at', { withTimezone: true }),
   unsubscribedAt: timestamp('unsubscribed_at', { withTimezone: true }),
   contactId: contactIdForeignKey,
@@ -102,7 +104,7 @@ const messageColumns = {
 };
 
 const senderColumns = {
-  senderName: varchar('sender_name', { length: 255 }).notNull(),
+  senderName: varchar('sender_name', { length: LENGTH.INT_256 }).notNull(),
 };
 
 /**

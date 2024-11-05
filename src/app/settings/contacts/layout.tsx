@@ -17,7 +17,7 @@ export default function Layout({
         </BreadcrumbItem>
         <BreadcrumbSeparator className='hidden md:block' />
         <BreadcrumbItem>
-          <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+          <BreadcrumbPage>Contacts</BreadcrumbPage>
         </BreadcrumbItem>
       </AppHeader>
       <Container>{children}</Container>

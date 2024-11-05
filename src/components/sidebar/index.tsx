@@ -10,7 +10,7 @@ import {
   SidebarMenuItem,
 } from '@treeshake/ui/components/sidebar';
 
-import { Send, Settings } from 'lucide-react';
+import { Contact, History, Mail, Send, UserPen, Users } from 'lucide-react';
 import { FooterContent } from './footer-content';
 
 // Menu items.
@@ -20,13 +20,33 @@ const platformItems = [
     url: '/send-sms',
     icon: Send,
   },
+  {
+    title: 'History',
+    url: '/history',
+    icon: History,
+  },
 ];
 
 const settingsItems = [
   {
-    title: 'Settings',
-    url: '/settings',
-    icon: Settings,
+    title: 'Senders',
+    url: '/settings/senders',
+    icon: UserPen,
+  },
+  {
+    title: 'Contacts',
+    url: '/settings/contacts',
+    icon: Users,
+  },
+  {
+    title: 'Lists',
+    url: '/settings/lists',
+    icon: Contact,
+  },
+  {
+    title: 'Messages',
+    url: '/settings/messages',
+    icon: Mail,
   },
 ];
 

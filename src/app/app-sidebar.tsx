@@ -7,7 +7,7 @@ import {
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem,
+  SidebarMenuItem
 } from '@treeshake/ui/components/sidebar';
 
 import { Home } from 'lucide-react';

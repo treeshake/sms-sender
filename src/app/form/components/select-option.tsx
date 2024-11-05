@@ -3,15 +3,15 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "@treeshake/ui/components/form";
+} from '@treeshake/ui/components/form';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@treeshake/ui/components/select";
-import { type UseFormProps } from "..";
+} from '@treeshake/ui/components/select';
+import { type UseFormProps } from '..';
 
 export type FormSchemaProps = {
   form: UseFormProps;
@@ -36,7 +36,7 @@ export function SelectOptionFormField({
           <Select onValueChange={field.onChange} defaultValue={options[0]}>
             <FormControl>
               <SelectTrigger>
-                <SelectValue placeholder={placeholder ?? ""} />
+                <SelectValue placeholder={placeholder ?? ''} />
               </SelectTrigger>
             </FormControl>
             <SelectContent>

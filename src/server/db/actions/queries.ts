@@ -1,9 +1,9 @@
-"use server";
+'use server';
 
-import { count, eq } from "drizzle-orm";
-import { db } from "..";
-import { contactList, contactListContacts, sender } from "../schema";
-import { CountResult, type ContactList, type Sender } from "../types";
+import { count, eq } from 'drizzle-orm';
+import { db } from '..';
+import { contactList, contactListContacts, sender } from '../schema';
+import { type CountResult, type ContactList, type Sender } from '../types';
 
 export async function getSenders(): Promise<Sender[]> {
   return await db.select().from(sender);

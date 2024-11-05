@@ -7,7 +7,7 @@ import {
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem
+  SidebarMenuItem,
 } from '@treeshake/ui/components/sidebar';
 
 import { Send, Settings } from 'lucide-react';
@@ -29,7 +29,7 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar collapsible='icon'>
+    <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>SMS Sender</SidebarGroupLabel>

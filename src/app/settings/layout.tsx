@@ -3,7 +3,7 @@ import { AppHeader } from '@treeshake/components/layouts/header';
 import {
   BreadcrumbItem,
   BreadcrumbPage,
-  BreadcrumbSeparator
+  BreadcrumbSeparator,
 } from '@treeshake/ui/components/breadcrumb';
 
 export default function Layout({

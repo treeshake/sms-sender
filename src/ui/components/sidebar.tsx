@@ -1,10 +1,12 @@
 'use client';
 
+import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { type VariantProps, cva } from 'class-variance-authority';
 import { PanelLeft } from 'lucide-react';
-import * as React from 'react';
 
+import { useIsMobile } from '@treeshake/ui/hooks/use-mobile';
+import { cn } from '@treeshake/ui/lib/utils';
 import { Button } from '@treeshake/ui/components/button';
 import { Input } from '@treeshake/ui/components/input';
 import { Separator } from '@treeshake/ui/components/separator';
@@ -16,8 +18,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@treeshake/ui/components/tooltip';
-import { useIsMobile } from '@treeshake/ui/hooks/use-mobile';
-import { cn } from '../lib/utils';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar:state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;

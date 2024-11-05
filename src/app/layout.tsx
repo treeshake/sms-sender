@@ -1,6 +1,6 @@
 import { AppSidebar } from '@treeshake/components/sidebar';
 import '@treeshake/styles/globals.css';
-import { SidebarProvider } from '@treeshake/ui/components/sidebar';
+import { SidebarInset, SidebarProvider } from '@treeshake/ui/components/sidebar';
 import { ThemeProvider } from '@treeshake/ui/theme-provider';
 
 import { GeistSans } from 'geist/font/sans';
@@ -26,7 +26,7 @@ export default function RootLayout({
         >
           <SidebarProvider>
             <AppSidebar />
-            {children}
+            <SidebarInset>{children}</SidebarInset>
           </SidebarProvider>
         </ThemeProvider>
       </body>

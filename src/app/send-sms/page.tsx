@@ -10,5 +10,9 @@ export default async function Page() {
     getContactListsSummary(),
   ]);
 
-  return <SendForm senders={senders} contactLists={contactLists} />;
+  return (
+    <div className='flex'>
+      <SendForm senders={senders} contactLists={contactLists} />
+    </div>
+  );
 }

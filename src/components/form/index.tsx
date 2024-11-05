@@ -74,7 +74,7 @@ export function SendForm({
           placeholder='Select a contacts list'
         />
         <Button type='submit' disabled={pending}>
-          Submit
+          Send SMS
         </Button>
       </form>
     </Form>

@@ -14,12 +14,15 @@ import { Send, Settings } from 'lucide-react';
 import { FooterContent } from './footer-content';
 
 // Menu items.
-const items = [
+const platformItems = [
   {
     title: 'Send SMS',
     url: '/send-sms',
     icon: Send,
   },
+];
+
+const settingsItems = [
   {
     title: 'Settings',
     url: '/settings',
@@ -32,10 +35,27 @@ export function AppSidebar() {
     <Sidebar collapsible='icon'>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>SMS Sender</SidebarGroupLabel>
+          <SidebarGroupLabel>Platform</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {platformItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Settings</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {settingsItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
